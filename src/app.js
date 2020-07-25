@@ -24,22 +24,22 @@ app.use(express.static(publicDirectoryPath));
 app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather',
-        name: 'Nano Reperger'
+        name: 'Nano'
     });
 });
 
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About me',
-        name: 'Nano Reperger'
+        name: 'Nano'
     });
 });
 
 app.get('/help', (req, res) => {
     res.render('help', {
         title: 'Help page',
-        name: 'Nano Reperger',
-        helpText: 'For more information, please contact us at nanoreperger@gmail.com!'
+        name: 'Nano',
+        helpText: 'For more information, please contact us!'
     });
 });
 
