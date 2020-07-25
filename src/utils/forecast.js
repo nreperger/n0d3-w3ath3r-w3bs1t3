@@ -15,8 +15,9 @@ const forecast = (latitude, longitude, callback) => {
             const tempFeel  = data.feelslike;
             const overcast = data.weather_descriptions[0];
             const humidity = data.humidity;
+            const rain = data.precip;
 
-            callback(undefined, overcast + ". It is currently " + temp + " degrees out. It feels like " + tempFeel + " degrees out. The humidity is " + humidity + "%.");
+            callback(undefined, overcast + ". It is currently " + temp + " degrees out. It feels like " + tempFeel + " degrees out. The humidity is " + humidity + "%. The probability of rain is " + rain + "%.");
         }
     });
 };
