@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
