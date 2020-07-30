@@ -5,6 +5,8 @@ const hbs = require('hbs');
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
 
+const testAPIRouter = require('./routes/testAPI');
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -20,6 +22,8 @@ hbs.registerPartials(partialsPath);
 
 // setup static directory to serve
 app.use(express.static(publicDirectoryPath));
+
+app.use('/testAPI', testAPIRouter);
 
 app.get('', (req, res) => {
     res.render('index', {
