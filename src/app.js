@@ -38,11 +38,13 @@ app.post('/registerUser', (req, res) => {
             return res.send({ error: 'Wrong token!' });
         }
     }
-    
-    console.log(req.body);
 
-    if (!req.body.user || !req.body.password) {
-        return res.send({ error: 'User or Password not received!'});
+    if (!req.body.user) {
+        return res.send({ error: 'User not received!'});
+    }
+
+    if (!req.body.password) {
+        return res.send({ error: 'Password not received!'});
     }
 
     return res.send({
