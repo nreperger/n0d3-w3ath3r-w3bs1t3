@@ -22,7 +22,7 @@ hbs.registerPartials(partialsPath);
 // setup static directory to serve
 app.use(express.static(publicDirectoryPath));
 
-app.use(express.bodyParser);
+app.use(express.bodyParser());
 
 app.get('', (req, res) => {
     res.render('index', {
