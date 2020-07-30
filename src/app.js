@@ -39,12 +39,16 @@ app.post('/registerUser', (req, res) => {
                 return res.send({ error: 'Wrong token!' });
             }
         }
+
+        var user = req.body.user;
+        var password = req.body.password;
     
         res.send({
             id: 12345,
-            user: req.body.user,
-            password: req.body.password
+            user,
+            password
         });
+        
     } catch (e) {
         res.send({ 'Error': e });
     }
