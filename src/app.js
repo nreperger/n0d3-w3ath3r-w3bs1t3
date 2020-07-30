@@ -28,10 +28,19 @@ app.get('', (req, res) => {
     });
 });
 
-app.post('/testAPI', (req, res) => {
-    res.send({
+app.post('/registerUser', (req, res) => {
+    //API recieve user, password and token
+    if (!req.body.token) {
+        return res.send({ error: 'Token not received!'});
+    }
+    if (!req.body.user || !req.body.password) {
+        return res.send({ error: 'User or Password not received!'});
+    }
+
+    return res.send({
         id: 12345,
-        user: 'Mariano Reperger'
+        user: req.body.user,
+        password: req.body.password
     });
 });
 
