@@ -32,21 +32,21 @@ app.get('', (req, res) => {
 app.post('/registerUser', (req, res) => {
     if (!req.header('token')) {
         return res.send({ error: 'Token not received!'});
-    }
-    if (!req.body.user || !req.body.password) {
-        return res.send({ error: 'User or Password not received!'});
+    } else {
+        var token = req.header('token');
+        if (token !== '123123') {
+            return res.send({ error: 'Wrong token!'});
+        }
     }
 
-    var token = req.header('token');
-    if (token !== '123123') {
-        return res.send({ error: 'Wrong token!'});
+    if (!req.body.user || !req.body.password) {
+        return res.send({ error: 'User or Password not received!'});
     }
 
     return res.send({
         id: 12345,
         user: req.body.user,
-        password: req.body.password,
-        token: req.header('token')
+        password: req.body.password
     });
 });
 
