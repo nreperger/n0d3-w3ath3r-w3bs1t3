@@ -30,28 +30,32 @@ app.get('', (req, res) => {
 });
 
 app.post('/registerUser', (req, res) => {
-    if (!req.header('token')) {
-        return res.send({ error: 'Token not received!'});
-    } else {
-        var token = req.header('token');
-        if (token !== '123123') {
-            return res.send({ error: 'Wrong token!' });
+    try {
+        if (!req.header('token')) {
+            return res.send({ error: 'Token not received!'});
+        } else {
+            var token = req.header('token');
+            if (token !== '123123') {
+                return res.send({ error: 'Wrong token!' });
+            }
         }
+    
+        if (!req.body.user) {
+            return res.send({ error: 'User not received!'});
+        }
+    
+        if (!req.body.password) {
+            return res.send({ error: 'Password not received!'});
+        }
+    
+        res.send({
+            id: 12345,
+            user: req.body.user,
+            password: req.body.password
+        });
+    } catch (e) {
+        res.send({ 'Error': e});
     }
-
-    if (!req.body.user) {
-        return res.send({ error: 'User not received!'});
-    }
-
-    if (!req.body.password) {
-        return res.send({ error: 'Password not received!'});
-    }
-
-    res.send({
-        id: 12345,
-        user: req.body.user,
-        password: req.body.password
-    });
 });
 
 app.get('/about', (req, res) => {
