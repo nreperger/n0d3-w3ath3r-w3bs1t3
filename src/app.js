@@ -34,16 +34,16 @@ app.get('', (req, res) => {
 app.post('/registerUser', (req, res) => {
     try {
         if (!req.header('token')) {
-            return res.send({ error: 'Token not received!'});
+            return res.json({ error: 'Token not received!'});
         } else {
             var token = req.header('token');
             if (token !== '123123') {
-                return res.send({ error: 'Wrong token!' });
+                return res.json({ error: 'Wrong token!' });
             }
         }
 
         if (!req.body.user || !req.body.password) {
-            return res.send({ error: "You must send the user or password"});
+            return res.json({ error: "You must send the user or password"});
         }
         
         res.json({ 
@@ -52,7 +52,7 @@ app.post('/registerUser', (req, res) => {
         });
 
     } catch (e) {
-        res.send({ 'Error': e });
+        res.json({ 'Error': e });
     }
 });
 
