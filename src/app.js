@@ -22,8 +22,7 @@ hbs.registerPartials(partialsPath);
 // setup static directory to serve
 app.use(express.static(publicDirectoryPath));
 
-app.use(express.bodyParser());
-//app.use(bodyParser);
+app.use(bodyParser.json());
 
 app.get('', (req, res) => {
     res.render('index', {
@@ -42,8 +41,11 @@ app.post('/registerUser', (req, res) => {
                 return res.send({ error: 'Wrong token!' });
             }
         }
-    
-       res.send();
+        
+        res.send({ 
+            user: req.body.user, 
+            password: req.body.password
+        });
 
     } catch (e) {
         res.send({ 'Error': e });
