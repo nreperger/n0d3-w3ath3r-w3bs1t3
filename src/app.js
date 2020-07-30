@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
@@ -31,7 +32,12 @@ app.get('', (req, res) => {
     });
 });
 
-app.post('/registerUser', (req, res) => {
+const corsOptions = {
+    origin: 'http://127.0.0.1:3000',
+    optionsSuccessStatus: 200
+};
+
+app.post('/registerUser', cors(corsOptions), (req, res) => {
     try {
         if (!req.header('token')) {
             return res.json({ error: 'Token not received!'});
