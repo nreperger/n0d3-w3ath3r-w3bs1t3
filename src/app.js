@@ -30,7 +30,7 @@ app.get('', (req, res) => {
 
 app.post('/registerUser', (req, res) => {
     //API recieve user, password and token
-    return res.send(req);
+    return res.send(req.body);
 
     if (!req.header.token) {
         return res.send({ error: 'Token not received!'});
