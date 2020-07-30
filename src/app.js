@@ -42,7 +42,7 @@ app.post('/registerUser', (req, res) => {
             }
         }
     
-        res.send(req.body);
+        res.send("Entro");
 
     } catch (e) {
         res.send({ 'Error': e });
