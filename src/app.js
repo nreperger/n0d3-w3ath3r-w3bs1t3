@@ -23,6 +23,8 @@ hbs.registerPartials(partialsPath);
 app.use(express.static(publicDirectoryPath));
 
 //app.use(express.bodyParser());
+app.user(bodyParser);
+app.use(express.json());
 
 app.get('', (req, res) => {
     res.render('index', {
@@ -42,7 +44,7 @@ app.post('/registerUser', (req, res) => {
             }
         }
     
-        res.send(req.body.user);
+        res.json({ user: req.body.user});
 
     } catch (e) {
         res.send({ 'Error': e });
