@@ -38,7 +38,9 @@ app.post('/registerUser', (req, res) => {
             return res.send({ error: 'Wrong token!' });
         }
     }
-    return res.send(req.body);
+    
+    console.log(req.body);
+
     if (!req.body.user || !req.body.password) {
         return res.send({ error: 'User or Password not received!'});
     }
