@@ -30,7 +30,7 @@ app.get('', (req, res) => {
 
 app.post('/registerUser', (req, res) => {
     //API recieve user, password and token
-    if (!req.body.token) {
+    if (!req.header.token) {
         return res.send({ error: 'Token not received!'});
     }
     if (!req.body.user || !req.body.password) {
@@ -40,7 +40,8 @@ app.post('/registerUser', (req, res) => {
     return res.send({
         id: 12345,
         user: req.body.user,
-        password: req.body.password
+        password: req.body.password,
+        token: req.header.token
     });
 });
 
