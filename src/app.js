@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
+const bodyParser = require('body-parser');
 
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
@@ -30,9 +31,9 @@ app.get('', (req, res) => {
 
 app.post('/registerUser', (req, res) => {
     //API recieve user, password and token
-    return res.send(req.body);
+    return res.send(req.header('token'));
 
-    if (!req.header.token) {
+    if (!req.header('token')) {
         return res.send({ error: 'Token not received!'});
     }
     if (!req.body.user || !req.body.password) {
@@ -43,7 +44,7 @@ app.post('/registerUser', (req, res) => {
         id: 12345,
         user: req.body.user,
         password: req.body.password,
-        token: req.header.token
+        token: req.header('token')
     });
 });
 
