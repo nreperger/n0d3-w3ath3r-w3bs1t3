@@ -47,7 +47,7 @@ app.post('/registerUser', (req, res) => {
         return res.send({ error: 'Password not received!'});
     }
 
-    return res.send({
+    res.send({
         id: 12345,
         user: req.body.user,
         password: req.body.password
