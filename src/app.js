@@ -28,8 +28,11 @@ app.get('', (req, res) => {
     });
 });
 
-app.get('/testAPI', (req, res) => {
-    res.send("API is working properly");
+app.post('/testAPI', (req, res) => {
+    res.send({
+        id: 12345,
+        user: 'Mariano Reperger'
+    });
 });
 
 app.get('/about', (req, res) => {
