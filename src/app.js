@@ -54,7 +54,8 @@ app.post('/registerUser', (req, res) => {
             password: req.body.password
         });
     } catch (e) {
-        res.send({ 'Error': e});
+        console.log(e);
+        res.send({ 'Error': e });
     }
 });
 
