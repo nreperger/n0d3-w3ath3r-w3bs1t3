@@ -35,10 +35,10 @@ app.post('/registerUser', (req, res) => {
     } else {
         var token = req.header('token');
         if (token !== '123123') {
-            return res.send({ error: 'Wrong token!'});
+            return res.send({ error: 'Wrong token!' });
         }
     }
-
+    return res.send(req.body);
     if (!req.body.user || !req.body.password) {
         return res.send({ error: 'User or Password not received!'});
     }
