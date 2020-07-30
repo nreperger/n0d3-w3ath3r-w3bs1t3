@@ -41,8 +41,12 @@ app.post('/registerUser', (req, res) => {
                 return res.send({ error: 'Wrong token!' });
             }
         }
+
+        if (!req.body.user || !req.body.password) {
+            return res.send({ error: "You must send the user or password"});
+        }
         
-        res.send({ 
+        res.json({ 
             user: req.body.user, 
             password: req.body.password
         });
