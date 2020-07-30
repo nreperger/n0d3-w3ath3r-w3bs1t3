@@ -24,6 +24,7 @@ hbs.registerPartials(partialsPath);
 app.use(express.static(publicDirectoryPath));
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('', (req, res) => {
     res.render('index', {
@@ -32,12 +33,8 @@ app.get('', (req, res) => {
     });
 });
 
-const corsOptions = {
-    origin: 'http://127.0.0.1:3000',
-    optionsSuccessStatus: 200
-};
 
-app.post('/registerUser', cors(corsOptions), (req, res) => {
+app.post('/registerUser', (req, res) => {
     try {
         if (!req.header('token')) {
             return res.json({ error: 'Token not received!'});
